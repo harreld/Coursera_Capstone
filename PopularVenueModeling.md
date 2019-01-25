@@ -1,10 +1,13 @@
 # Popular Venue Modeling
 
+#### Michael Harreld
+
 ## Introduction
 
 Investors and developers must choose cities and venue types that will be successful and return on their investments.
 Choosing what to build in a particular city is a difficult prospect and could involve many factors.
 Location data services such as Foursquare will show what current venues exist in a particular city, but they do not generally tell what venue types _should_ be popular in that city.
+
 This project explores the development of a model that will predict what venue types would be popular based on analyzing popular types in similar cities.
 Such a model would help developers see what venue types would be popular in a particular city and whether those types might be underrepresented there.
 The developer could use this information to make better project decisions and increase their return.
@@ -55,3 +58,4 @@ The API takes a location as an input and returns a list of venues close to that 
 Each returned venue contains a name, address info, and a venue category.
 A venue category could be, for example, Mexican Restaurant or Bank.
 We will use the Foursquare venue data to determine the frequencies of various venue categories within a particular city.
+The returned data is in json format and will have to have relevant values extracted and structured.
