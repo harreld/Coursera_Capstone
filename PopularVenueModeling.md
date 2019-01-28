@@ -62,12 +62,79 @@ The returned data is in json format and will have to have relevant values extrac
 
 ## Methodology
 
+Intro to methodology
+
+Pull in city population, density, and location data
+
+Clean data to City	State	Population	Density	Latitude	Longitude
+
+Pull and process venue data
+
+top 75 cities, 50 venues nearest to city center
+
+City	City Latitude	City Longitude	Venue	Venue Latitude	Venue Longitude	Venue Category
+
+Calculate venue category frequency per city
+
+Grouped by venue category to find counts of each
+
+Found unique categories
+
+Created a one hot table to have a column for each category
+
+grouped one hot table by city and found mean of each venue category to find fractionals
+
+examined the top 5 venue categories for each city
+
+Perform clustering of cities based on similarity of top venue categories
+to see if there was likely a location to top venue correlation
+also looked at each cluster to characterize
+
 Methodology section which represents the main component of the report where you discuss and describe any exploratory data analysis that you did, any inferential statistical testing that you performed, and what machine learnings were used and why.
+
+Exploration of relationships of population and density to venue popularity
+Looking first at population and density, create a new dataframe containing the number one venue category of each city along with its population and density
+Group this data by venue category and find the mean of population and density for each category.
+
+Graphed Mean City Population and Density per venue categores
+
+Modeling of venue popularity from population, density, and location
+categorical model Since population, density, and location all showed feasible relationships to venue popularity, use them as independent variables in the modeling.
+The target variable is most popular venue category.
+Choose a decision tree since the independent variable is categorical.
+
+held out 20% of data 60/15
+trained to tree depth 4
 
 
 ## Results
 
 section where you discuss the results.
+
+389 unique categories
+
+map-seems like some correlation - e.g. red and green coastal and midwest, blue tending towards north east, purple san francisco only, orange corpus cristi only
+red (0) diverse restaurants and coffe shops
+purple(1) san fran harbor related venues
+blue(2) bars
+green(3) mexican restaurants
+orange(4) corpus christi resort related venues
+
+Graphed Mean City Population and Density per venue categores
+Table of data for venue rank 1
+maximum for both pop and density caribbean restaurant
+minimum pop portuguese restaurant
+minimum density discount store
+
+tree picture
+
+oveall most likely coffee shop
+  west of birmingham - mexican restaurant
+    south of DC - mexican restaurant
+    north of DC - coffe shop
+  east of birmingham - bar
+    smaller than SF - bar 
+    larger than SF - fast food restaurant
 
 ## Discussion
 
@@ -84,3 +151,4 @@ section where you discuss any observations you noted and any recommendations you
 lots of restaurants
 only small range of downtown, limited to 50
 model predict top 10 instead of 1
+cluster distance based on set inclusion instead of exact rank match
