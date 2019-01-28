@@ -25,6 +25,7 @@ These two data sources both use Latitude and Longitude which can be used to rela
 The web page https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population contains a table with the top 311 United States cities by population.
 The table includes city and state name, population data, land area, population density, and city coordinates.
 Sample data for the first row is
+
 | Column Name    | Value       |
 | -----------    | -----       |
 | 2017 rank      | 1           |
@@ -114,6 +115,8 @@ section where you discuss the results.
 
 389 unique categories
 
+![Cluster map](PopVenueModel_cluster_map.JPG "Cluster Map")
+
 map-seems like some correlation - e.g. red and green coastal and midwest, blue tending towards north east, purple san francisco only, orange corpus cristi only
 red (0) diverse restaurants and coffe shops
 purple(1) san fran harbor related venues
@@ -122,12 +125,16 @@ green(3) mexican restaurants
 orange(4) corpus christi resort related venues
 
 Graphed Mean City Population and Density per venue categores
+
+![Categories vs population density](PopVenueModel_categories_vs_pop_density.JPG "Categories by Population and Density")
+
 Table of data for venue rank 1
 maximum for both pop and density caribbean restaurant
 minimum pop portuguese restaurant
 minimum density discount store
 
 tree picture
+![Decision tree](PopVenueModel_decision_tree.JPG "Decision Tree")
 
 oveall most likely coffee shop
   south of long beach CA- mexican restaurant
@@ -140,6 +147,7 @@ oveall most likely coffee shop
 Predicted 8 out of 15 in the top ten venues
 
 stats table
+![Rank found statistics](PopVenueModel_rank_found_stats.JPG "Rank found statistics")
 
 ## Discussion
 
