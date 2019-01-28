@@ -59,3 +59,28 @@ Each returned venue contains a name, address info, and a venue category.
 A venue category could be, for example, Mexican Restaurant or Bank.
 We will use the Foursquare venue data to determine the frequencies of various venue categories within a particular city.
 The returned data is in json format and will have to have relevant values extracted and structured.
+
+## Methodology
+
+Methodology section which represents the main component of the report where you discuss and describe any exploratory data analysis that you did, any inferential statistical testing that you performed, and what machine learnings were used and why.
+
+
+## Results
+
+section where you discuss the results.
+
+## Discussion
+
+section where you discuss any observations you noted and any recommendations you can make based on the results.
+
+## Conclusion section where you conclude the report.
+
+2. A link to your Notebook on your Github repository pushed showing your code. (15 marks)
+
+3. Your choice of a presentation or blogpost. (10 marks)
+
+
+**
+lots of restaurants
+only small range of downtown, limited to 50
+model predict top 10 instead of 1
