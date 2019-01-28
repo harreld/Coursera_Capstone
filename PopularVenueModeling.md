@@ -107,6 +107,7 @@ held out 20% of data 60/15
 trained to tree depth 4
 
 
+
 ## Results
 
 section where you discuss the results.
@@ -129,16 +130,25 @@ minimum density discount store
 tree picture
 
 oveall most likely coffee shop
-  west of birmingham - mexican restaurant
-    south of DC - mexican restaurant
-    north of DC - coffe shop
-  east of birmingham - bar
-    smaller than SF - bar 
-    larger than SF - fast food restaurant
+  south of long beach CA- mexican restaurant
+    smaller than san antonio tx - sandwich place
+    larger  than san antonio tx - mexican restaurant
+  north of long beach CA- coffee shop
+    west of rockford IL- coffee shop 
+    east of rockford IL - bar
+
+Predicted 8 out of 15 in the top ten venues
+
+stats table
 
 ## Discussion
 
 section where you discuss any observations you noted and any recommendations you can make based on the results.
+
+lots of restaurants
+only small range of downtown, limited to 50
+model predict top 10 instead of 1
+cluster distance based on set inclusion instead of exact rank match
 
 ## Conclusion section where you conclude the report.
 
