@@ -4,7 +4,30 @@
 #### Applied Data Science Capstone Project
 #### January 29, 2019
 
-## Table of Contents
+### Table of Contents
+* Abstract
+* 1 Introduction
+* 2 Methodology
+  * 2.1 Data Acquisition
+    * 2.1.1 Wikipedia City Data
+    * 2.1.2 Foursquare Venue Data
+  * 2.2 Tools
+  * 2.3 Data Ingestion and Cleaning
+    * 2.3.1 City Data
+    * 2.3.2 Venue Data
+  * 2.4 Data Exploration
+    * 2.4.1 Clustering Cities by Top Venues
+    * 2.4.2 Venue Popularity by Population and Density
+  * 2.5 Venue Popularity Modeling
+    * 2.5.1 Model Training
+    * 2.5.2 Model Validation
+* 3 Results
+  * 3.1 Cities Clustered by Top Venues
+  * 3.2 Venue Popularity by Population and Density
+  * 3.3 Decision Tree Model for Top Venue Category
+* 4 Discussion
+* 5 Conclusion
+
 
 ## Abstract
 The problem of how a developer could choose a venue to successfully develop in a city is considered.  City population, population density, and geographic locatin data is used to predict what venues would be popular based on similar cities.   K-means clustering is used to group cities by similar top venue categories.  Finally, a decision tree model is developed to predict the top venue for a city based on city data.  With some refinement, this model would be useful for choosing profitable venue types. 
