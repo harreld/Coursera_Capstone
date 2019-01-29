@@ -7,6 +7,8 @@
 ## Table of Contents
 
 ## Abstract
+The problem of how a developer could choose a venue to successfully develop in a city is considered.  City data is used to predict what venues would be popular based on similar cities. 
+
 ## Introduction
 
 Investors and developers must choose cities and venue types that will be successful and return on their investments.
@@ -223,6 +225,8 @@ For the 8 cities where the prediction matched one of the top 10 actual ranked ve
 
 ## Discussion
 
+A model was successfully created that had some success in predicting popular venues based on city population, density, and geographic location data.  While overall the approach appears sound, there were some limitations encountered that degraded the quality of the model.  These issues could likely be addressed in iterative stages.
+
 The Foursquare account used had limiting policies that kept the city count at 75 and the venues per city at 50.  This greatly limited the venues to only those found in the city center without sampling the entire city.  Due to this there was observed bias found in the data for example the cluster containing only San Francisco being skewed towards harbor related venues while the one containing only Corpus Christi was skewed towards resort related venues.  Other cities could similarly be seen to have an overrepresentation of venues occuring at the center of down town.  Using an unlimited Foursquare account would allow the range and venue count to cover the entire city and give much more representative data for the venues that city contained.  We would expect better model results overall given this data.
 
 The clustering algorithm defined closeness based on equivalent venue categories between cities in a particular rank.  For example, two cities would have more 'closeness' for clustering if they both had *Bar* in the 3rd ranked position.  They would not be considered any closer, however, if one had *Bar* in rank 2 and the other had it in rank 3.  This makes the closeness measure more brittle and could be improved so that closeness was granted when the same category appeared between cities in any rank.  It might be further refined to give more closeness if the ranks were nearer.  Having a refined closeness algorithm would yield better clustering and likely give greater insight into the city trends.
@@ -233,4 +237,4 @@ Most of the venue categories were restaurants, however there were other categori
 
 Using the decision tree model and other results, it is possible to make recommendations on likely popular venue categories for a particular city based on population, population density, and geographic location.  We can imagine, however, a developer intending to develop a venue in a city using this model to see what kinds of venues might be popular.  The predicted popularity could be compared to actual venue occurence to find gaps in actual venues.  Identifying a likely popular venue that does not yet occur in a particular presents an opportunity for successful development and high return on investment.
 
-While the preliminary results are promising, limitations in the available data and tools hampered the ability to construct robust models.  Acquiring more data and refining our models further would likely make this approach more powerful.  
+While the preliminary results are promising, limitations in the available data and tools hampered the ability to construct robust models.  Acquiring more data and refining our models further would likely make this approach more powerful.  With further refinement, this approach could definitely be used to guide developers and investors into profitable ventures.
