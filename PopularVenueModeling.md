@@ -28,7 +28,7 @@
 * 6 Conclusion
 
 ## Abstract
-The problem of how a developer could choose a venue to successfully develop in a city is considered.  City population, population density, and geographic locatin data is used to predict what venues would be popular based on similar cities.   K-means clustering is used to group cities by similar top venue categories.  Finally, a decision tree model is developed to predict the top venue for a city based on city data.  With some refinement, this model would be useful for choosing profitable venue types. 
+The problem of how a developer could choose a venue to successfully develop in a city is considered.  City population, population density, and geographic location data is used to predict what venues would be popular based on similar cities.   K-means clustering is used to group cities by similar top venue categories.  Finally, a decision tree model is developed to predict the top venue for a city based on city data.  With some refinement, this model would be useful for choosing profitable venue types. 
 
 ## 1 Introduction
 
@@ -91,7 +91,7 @@ The API takes a location as an input and returns a list of venues close to that 
 Each returned venue contains a name, address info, location, and a venue category.
 A venue category could be, for example, Mexican Restaurant or Bank.
 We used the Foursquare venue data to determine the frequencies of various venue categories within a particular city.
-The returned data is in json format and relevant values are extracted and structured.
+The returned data is in JSON format and relevant values are extracted and structured.
 
 ## 3 Methodology
 
@@ -160,7 +160,7 @@ The gathered data was explored and visualized to gain insight into candidate ind
 
 The location and venue data was explored to give insight into whether location data was likely to be a predictive factor of top venue categories for a city.  Cities were clustered using the k-means clustering algorithm into 5 groups based on similarity between top venues.  These clusters were graphed on a map and also displayed in tables.  
 
-A one-hot table was created for the venue data so that each venue category became a dedicated column with a value of 1 only if the venue was that particular category, 0 otherwise.  This one-hot table was then grouped by City applying a mean for each one-hot column.  This grouped table thus contained the fractional occurence of each venue category within each city.
+A one-hot table was created for the venue data so that each venue category became a dedicated column with a value of 1 only if the venue was that particular category, 0 otherwise.  This one-hot table was then grouped by City applying a mean for each one-hot column.  This grouped table thus contained the fractional occurrence of each venue category within each city.
 
 The K-means clustering algorithm was applied to the top 10 venue categories to find 5 clusters of cities grouped by most similar rankings.  The category value of each city was merged with its location data in preparation for graphing.  A map of the United States was created with each of the 75 considered cities marked with using a color coded by category.  Each of the 5 categories was also examined by table to see rough patterns in the top venues. 
 
@@ -185,7 +185,7 @@ The training was done using 80% of the 75 cities (60).  The tree was constructed
 
 #### 3.3.2 Model Validation
 
-For validation, 20% of the 75 cities (15) were held back from training.  Each of these 15 cities had their population, population density, and location information put into the trained model to output a predicted venue category.  The actual top ten venue categories for each of the cities was then used to determine the accuracy of the prediction.  The number of predictions occuring in the top 10 actuals was calculated.  For the predictions that were found in the top 10 actuals, analysis on the actual rankied postion was performed to calculate mean, standard deviation, range, and quartile statistics. 
+For validation, 20% of the 75 cities (15) were held back from training.  Each of these 15 cities had their population, population density, and location information put into the trained model to output a predicted venue category.  The actual top ten venue categories for each of the cities was then used to determine the accuracy of the prediction.  The number of predictions occurring in the top 10 actuals was calculated.  For the predictions that were found in the top 10 actuals, analysis on the actual ranked position was performed to calculate mean, standard deviation, range, and quartile statistics. 
 
 ## 4 Results
 
@@ -207,13 +207,6 @@ Summarizing, the following observations were made for the five categories:
 | 2 | Blue | North east trend | Bars |
 | 3 | Green | South/Midwest | Mexican Restaurants |
 | 4 | Orange | Corpus Christi only | Resort related |
-
-map-seems like some correlation - e.g. red and green coastal and midwest, blue tending towards north east, purple san francisco only, orange corpus cristi only
-red (0) diverse restaurants and coffe shops
-purple(1) san fran harbor related venues
-blue(2) bars
-green(3) mexican restaurants
-orange(4) corpus christi resort related venues
 
 ### 4.2 Venue Popularity by Population and Density
 
@@ -247,7 +240,7 @@ For the 8 cities where the prediction matched one of the top 10 actual ranked ve
 
 A model was successfully created that had some success in predicting popular venues based on city population, density, and geographic location data.  While overall the approach appears sound, there were some limitations encountered that degraded the quality of the model.  These issues could likely be addressed in iterative stages.
 
-The Foursquare account used had limiting policies that kept the city count at 75 and the venues per city at 50.  This greatly limited the venues to only those found in the city center without sampling the entire city.  Due to this there was observed bias found in the data for example the cluster containing only San Francisco being skewed towards harbor related venues while the one containing only Corpus Christi was skewed towards resort related venues.  Other cities could similarly be seen to have an overrepresentation of venues occuring at the center of down town.  Using an unlimited Foursquare account would allow the range and venue count to cover the entire city and give much more representative data for the venues that city contained.  We would expect better model results overall given this data.
+The Foursquare account used had limiting policies that kept the city count at 75 and the venues per city at 50.  This greatly limited the venues to only those found in the city center without sampling the entire city.  Due to this there was observed bias found in the data for example the cluster containing only San Francisco being skewed towards harbor related venues while the one containing only Corpus Christi was skewed towards resort related venues.  Other cities could similarly be seen to have an overrepresentation of venues occurring at the center of down town.  Using an unlimited Foursquare account would allow the range and venue count to cover the entire city and give much more representative data for the venues that city contained.  We would expect better model results overall given this data.
 
 The clustering algorithm defined closeness based on equivalent venue categories between cities in a particular rank.  For example, two cities would have more 'closeness' for clustering if they both had *Bar* in the 3rd ranked position.  They would not be considered any closer, however, if one had *Bar* in rank 2 and the other had it in rank 3.  This makes the closeness measure more brittle and could be improved so that closeness was granted when the same category appeared between cities in any rank.  It might be further refined to give more closeness if the ranks were nearer.  Having a refined closeness algorithm would yield better clustering and likely give greater insight into the city trends.
 
@@ -255,6 +248,6 @@ Most of the venue categories were restaurants, however there were other categori
 
 ## 6 Conclusion
 
-Using the decision tree model and other results, it is possible to make recommendations on likely popular venue categories for a particular city based on population, population density, and geographic location.  We can imagine, however, a developer intending to develop a venue in a city using this model to see what kinds of venues might be popular.  The predicted popularity could be compared to actual venue occurence to find gaps in actual venues.  Identifying a likely popular venue that does not yet occur in a particular presents an opportunity for successful development and high return on investment.
+Using the decision tree model and other results, it is possible to make recommendations on likely popular venue categories for a particular city based on population, population density, and geographic location.  We can imagine, however, a developer intending to develop a venue in a city using this model to see what kinds of venues might be popular.  The predicted popularity could be compared to actual venue occurrence to find gaps in actual venues.  Identifying a likely popular venue that does not yet occur in a particular presents an opportunity for successful development and high return on investment.
 
 While the preliminary results are promising, limitations in the available data and tools hampered the ability to construct robust models.  Acquiring more data and refining our models further would likely make this approach more powerful.  With further refinement, this approach could definitely be used to guide developers and investors into profitable ventures.
