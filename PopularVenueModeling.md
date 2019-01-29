@@ -164,11 +164,24 @@ For validation, 20% of the 75 cities (15) were held back from training.  Each of
 
 ## Results
 
-section where you discuss the results.
+### Cities Clustered by Top Venues
 
-389 unique categories
+The five clusters color coded to their city locations appears as follows:
 
 ![Cluster map](PopVenueModel_cluster_map.JPG "Cluster Map")
+
+Some geographic correlation can be seen in this map where top categories appear to have some rough patterns.
+Looking directly at the tabular data for top 10 venue categories per city within each cluster, we can also see other rough patterns.
+
+Summarizing, the following observations were made for the five categories:
+
+| Category | Color | Geographic Pattern | Venue Pattern |
+| -------- | ----- | ------------------ | ------------- |
+| 0 | Red | Coastal/Midwest | Diverse Restaurants and Coffee Shops |
+| 1 | Purple | San Francisco Only | Harbor related |
+| 2 | Blue | North east trend | Bars |
+| 3 | Green | Coastal/Midwest | Mexican Restaurants |
+| 4 | Orange | Corpus Christi only | Resort related |
 
 map-seems like some correlation - e.g. red and green coastal and midwest, blue tending towards north east, purple san francisco only, orange corpus cristi only
 red (0) diverse restaurants and coffe shops
@@ -177,14 +190,19 @@ blue(2) bars
 green(3) mexican restaurants
 orange(4) corpus christi resort related venues
 
-Graphed Mean City Population and Density per venue categores
+### Venue Popularity by Population and Density
+
+Mean City Population and Density were graphed for each venue category as follows:
 
 ![Categories vs population density](PopVenueModel_categories_vs_pop_density.JPG "Categories by Population and Density")
 
-Table of data for venue rank 1
-maximum for both pop and density caribbean restaurant
-minimum pop portuguese restaurant
-minimum density discount store
+There is a large range and distribution of both population and population density means across the categories.
+
+The venue category with the maximum for both mean population and density is the *Caribbean Restaurant*.
+Cities with top venue category *Portuguese Restaurant* have the minimum mean population.
+*Discount Store* is the top venue category having the minimum population density
+
+### Decision Tree Model for Top Venue Category
 
 tree picture
 ![Decision tree](PopVenueModel_decision_tree.JPG "Decision Tree")
