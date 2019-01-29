@@ -66,15 +66,51 @@ The returned data is in json format and relevant values are extracted and struct
 
 ## Methodology
 
-A Jupyter Notebook [PopVenueModel.ipynb](PopVenueModel.ipynb) running a python kernel was used to gather, sanitize, explore, model, and visualize data.  Data was brought in by accessing the city wikipedia table and the Foursquare venues API.  It was processed and cleaned so the two data sets could be merged into one.  Exploration was done by k-means clustering, statistical analysis, scatter plots, and geographic mapping.  A decision tree model was trained and validated to predict popular venues based on city data.
+A Jupyter Notebook [PopVenueModel.ipynb](PopVenueModel.ipynb) running a python kernel was used to gather, sanitize, explore, model, and visualize data.  The primary libraries imported and used in the notebook were:
+* **Pandas** : Data analysis tools
+* **NumPy** : Array handling
+* **Requests** : HTTP client
+* **Folium** : Map visualization
+* **Matplotlib** : 2D Plotting
+* **scikit-learn** : Machine learning
+* **Graphviz** : Graph visualization
+
+Data was brought in by accessing the city wikipedia table and the Foursquare venues API.  It was processed and cleaned so the two data sets could be merged into one.  Exploration was done by k-means clustering, statistical analysis, scatter plots, and geographic mapping.  A decision tree model was trained and validated to predict popular venues based on city data.
 
 ### Ingesting Data
-Data was directly accessed from the wiki web page and the Foursquare API and cleaned using 
+Data was directly accessed from the wiki web page and the Foursquare API and cleaned.
 
 #### City Data
-Pull in city population, density, and location data
+The large table from https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population was brought into the notebook using pandas and further processed.  Looking at the native columns it was noted that
+* Rank was effectively redundant to the population;
+* 2010 population data was not needed because there was newer 2017 data;
+* Change data was probably second order and could be ignored;
+* Land area columns were derivable from population and population density; and
+* Imperial unit values were derivable from the metric ones.
 
-Clean data to City	State	Population	Density	Latitude	Longitude
+Based on this analysis, the columns 
+* 2017 Rank
+* 2010 Census
+* Change
+* 2016 land area imperial
+* 2016 land area metric
+* 2016 population density imperial
+
+were dropped as irrelevant.
+
+Looking at the remaining column data the following issues were identified:
+* City data had superscript values that needed to be removed
+* Density data had embedded units that needed to be removed
+* Density data had commas that needed to be removed
+* Location had two values per field - needed to throw away the minutes-seconds data and keep the decimal version
+
+The data was cleaned by addressing each of these issues.
+
+The Location field had complex structured data such as *40.6635°N 73.9387°W* which could not be easily analyzed.  Functions were written to extract out the individual latitude and longitude values and these were introduced as 2 new columns replacing the structured Location column.
+
+All columns were cast to the correct type so that numerics could be analyzed.
+
+After cleanup the city data consisted of the following columns: City, State, Population, Density, Latitude, and	Longitude.
 
 #### Venue Data
 
