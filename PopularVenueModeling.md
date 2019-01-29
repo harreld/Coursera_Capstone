@@ -1,7 +1,8 @@
 # Popular Venue Modeling
 
 #### Michael Harreld
-#### Applied Data Science Capstone
+#### Applied Data Science Capstone Project
+#### January 29, 2019
 
 ## Table of Contents
 
@@ -19,7 +20,9 @@ Also, this model of venue popularity can expose trends and patterns.
 For example, it may be possible to find venue types that are popular in a certain geogrphic region or city size.
 Having this information can lead to better long term planning.
 
-## Data
+## Methodology
+
+### Data Acquisition
 
 Two data sources were used: 
 * Wikipedia for city location and population data; and 
@@ -27,7 +30,7 @@ Two data sources were used:
 
 These two data sources both use Latitude and Longitude which are used to relate them.
 
-### Wikipedia City Data
+#### Wikipedia City Data
 
 The web page https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population contains a table with the top 311 United States cities by population.
 The table includes city and state name, population data, land area, population density, and city coordinates.
@@ -58,7 +61,7 @@ Some observations and usage decisions on this table:
 After all of the cleanup we are left with the following data as candidates to our data model:
 City, State, Population, Population Density, Latitude, and Longitude.
 
-### Foursquare Venue Data
+#### Foursquare Venue Data
 
 The Foursquare web site provides many APIs for interacting with city location data.
 The API we use is venue search and is documented at https://developer.foursquare.com/docs/api/venues/search
@@ -68,7 +71,7 @@ A venue category could be, for example, Mexican Restaurant or Bank.
 We used the Foursquare venue data to determine the frequencies of various venue categories within a particular city.
 The returned data is in json format and relevant values are extracted and structured.
 
-## Methodology
+### Tools
 
 A Jupyter Notebook [PopVenueModel.ipynb](PopVenueModel.ipynb) running a python kernel was used to gather, sanitize, explore, model, and visualize data.  The primary libraries imported and used in the notebook were:
 * **Pandas** : Data analysis tools
