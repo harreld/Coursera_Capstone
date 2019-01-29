@@ -1,7 +1,7 @@
 # Popular Venue Modeling
 
 #### Michael Harreld
-
+## Table of Contents
 ## Introduction
 
 Investors and developers must choose cities and venue types that will be successful and return on their investments.
@@ -77,8 +77,8 @@ A Jupyter Notebook [PopVenueModel.ipynb](PopVenueModel.ipynb) running a python k
 
 Data was brought in by accessing the city wikipedia table and the Foursquare venues API.  It was processed and cleaned so the two data sets could be merged into one.  Exploration was done by k-means clustering, statistical analysis, scatter plots, and geographic mapping.  A decision tree model was trained and validated to predict popular venues based on city data.
 
-### Ingesting Data
-Data was directly accessed from the wiki web page and the Foursquare API and cleaned.
+### Data Ingestion and Cleaning
+Data was directly accessed from the wiki web page and the Foursquare API and cleaned.  Pandas and other python libraries were used to clean the data.
 
 #### City Data
 The large table from https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population was brought into the notebook using pandas and further processed.  Looking at the native columns it was noted that
@@ -113,17 +113,20 @@ All columns were cast to the correct type so that numerics could be analyzed.
 After cleanup the city data consisted of the following columns: City, State, Population, Density, Latitude, and	Longitude.
 
 #### Venue Data
-The 75 largest cities were separated from the city data to be the population.  For each of these cities, the Foursquare venue search API was accessed to 
+The 75 largest cities were separated from the city data to be the primary data set.  For each of these cities, the Foursquare venue search API was accessed to search for the 50 closest venues to the city's known latitude and longitude and within a 500 meter radius.  The range and count venue limits were applied based on the Foursquare account policy limits.
 
-Pull and process venue data
+Each request had a response of structured JSON data.  The following four values from each venue result were extracted from the JSON:
+* Venue
+* Venue Latitude
+* Venue Longitude
+* Venue Category
 
-#### Merging Data
-top 75 cities, 50 venues nearest to city center
-
-City	City Latitude	City Longitude	Venue	Venue Latitude	Venue Longitude	Venue Category
+These columns were joined with City Name, City Latitude, and City Longitude data into a large dataframe.
 
 ### Data Exploration
-viable relationships
+
+The gathered data was explored and visualized to gain insight into candidate independent variables that might predict the target variable of popular venue category.  To see if location data was a viable independent variable, the cities were clustered using the k-means algorithm to see if the clusters had a location pattern.  To explore whether population and density variables might be useful a scatter plot was created to graph top venue type by mean population and mean population density. 
+
 #### Clustering Cities by Top Venues
 Calculate venue category frequency per city
 
