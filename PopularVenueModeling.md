@@ -2,6 +2,7 @@
 
 #### Michael Harreld
 ## Table of Contents
+## Abstract
 ## Introduction
 
 Investors and developers must choose cities and venue types that will be successful and return on their investments.
@@ -128,17 +129,19 @@ These columns were joined with City Name, City Latitude, and City Longitude data
 The gathered data was explored and visualized to gain insight into candidate independent variables that might predict the target variable of popular venue category.  To see if location data was a viable independent variable, the cities were clustered using the k-means algorithm to see if the clusters had a location pattern.  To explore whether population and density variables might be useful a scatter plot was created to graph top venue type by mean population and mean population density. 
 
 #### Clustering Cities by Top Venues
+The location and venue data was explored to give insight into whether location data was likely to be a predictive factor of top venue categories for a city.  Cities were clustered using the k-means clustering algorithm into 5 groups based on similarity between top venues.  These clusters were graphed on a map and also displayed in tables.  
+
 A one-hot table was created for the venue data so that each venue category became a dedicated column with a value of 1 only if the venue was that particular category, 0 otherwise.  This one-hot table was then grouped by City applying a mean for each one-hot column.  This grouped table thus contained the fractional occurence of each venue category within each city.
 
 The K-means clustering algorithm was applied to the top 10 venue categories to find 5 clusters of cities grouped by most similar rankings.  The category value of each city was merged with its location data in preparation for graphing.  A map of the United States was created with each of the 75 considered cities marked with using a color coded by category.  Each of the 5 categories was also examined by table to see rough patterns in the top venues. 
 
 #### Venue Popularity by Population and Density
+Population and population density data was explored to see if this data might be a factor in predicting top city venue categories.  The mean population and density for each of the top city categories was calculated 
 
-Exploration of relationships of population and density to venue popularity
-Looking first at population and density, create a new dataframe containing the number one venue category of each city along with its population and density
-Group this data by venue category and find the mean of population and density for each category.
-
-Graphed Mean City Population and Density per venue categores
+A new dataframe was created containing the number one venue category of each city along with its population and density.  
+This data was grouped by category and the mean of population and population density for each category was calculated.  
+Each category was then added as a dot in a scatter plot with mean population as the x-axis and mean population density as the y-axis.
+Examining this plot gave insight into the range and clustering of population and density to determine if they were predictive candidates (spread out values) or not (centralized values).
 
 ### Venue Popularity Modeling
 #### Model Training
