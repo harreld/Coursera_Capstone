@@ -8,17 +8,20 @@ Investors and developers must choose cities and venue types that will be success
 Choosing what to build in a particular city is a difficult prospect and could involve many factors.
 Location data services such as Foursquare will show what current venues exist in a particular city, but they do not generally tell what venue types _should_ be popular in that city.
 
-This project explores the development of a model that will predict what venue types would be popular based on analyzing popular types in similar cities.
-Such a model would help developers see what venue types would be popular in a particular city and whether those types might be underrepresented there.
-The developer could use this information to make better project decisions and increase their return.
-Also, a model of venue popularity could expose trends and patterns.
-For example, it may be possible to find venue types that are popular in a certain region or city size.
-Having this information could lead to better long term planning.
+This project developed a model that predicts which venue types might be popular based on analyzing popular types in similar cities.
+Such a model could help developers see what venue types might be popular in a particular city and whether those types are locally underrepresented.
+The developer can use this information to make better project decisions and increase their return on investment.
+Also, this model of venue popularity can expose trends and patterns.
+For example, it may be possible to find venue types that are popular in a certain geogrphic region or city size.
+Having this information can lead to better long term planning.
 
 ## Data
 
-Two data sources will be used: Wikipedia for city location and population data; and Foursquare for city venue data.
-These two data sources both use Latitude and Longitude which can be used to relate their data sets.
+Two data sources were used: 
+* Wikipedia for city location and population data; and 
+* Foursquare for city venue data.
+
+These two data sources both use Latitude and Longitude which are used to relate their data sets.
 
 ### Wikipedia City Data
 
@@ -41,40 +44,47 @@ Sample data for the first row is
 | Location | 40.6635 N 73.9387 W |
 
 Some observations and usage decisions on this table:
-* There are 2 values for population, we will use the 2017 estimate and discard the 2010 value.
-* We will discard the Change value since it seems like it would be secondary to venue popularity.
-* Both the land area and population density values are given in both imperial and metric, we will discard the imperial versions.
-* Since land area can be determined based on population density and population, we will discard it.
-* Location data is given as a string and within the table data includes both the decimal and minutes-seconds formats - we will have to extract the decimal form.
-* Overall, the data in the table is messy and includes superscripts, units, and other noise that will need to be cleaned.
+* There are 2 values for population, we use the 2017 estimate and discard the 2010 value.
+* We discard the Change value since it seems like it would be secondary to venue popularity.
+* Both the land area and population density values are given in both imperial and metric, we discard the imperial versions.
+* Since land area can be determined based on population density and population, we discard it.
+* Location data is given as a string and within the table data includes both the decimal and minutes-seconds formats - we extract the decimal form only and separate out the latitude and longitude values.
+* Overall, the data in the table is messy and includes superscripts, units, and other noise that must be cleaned.
 
-After all of the cleanup we will be left with the following data as candidates to our data model:
+After all of the cleanup we are left with the following data as candidates to our data model:
 City, State, Population, Population Density, Latitude, and Longitude.
 
 ### Foursquare Venue Data
 
 The Foursquare web site provides many APIs for interacting with city location data.
-The API we will be using is venue search and is documented here https://developer.foursquare.com/docs/api/venues/search
+The API we use is venue search and is documented at https://developer.foursquare.com/docs/api/venues/search
 The API takes a location as an input and returns a list of venues close to that location.
 Each returned venue contains a name, address info, and a venue category.
 A venue category could be, for example, Mexican Restaurant or Bank.
 We will use the Foursquare venue data to determine the frequencies of various venue categories within a particular city.
-The returned data is in json format and will have to have relevant values extracted and structured.
+The returned data is in json format and relevant values are extracted and structured.
 
 ## Methodology
 
 Intro to methodology
-
+### Ingesting Data
+#### City Data
 Pull in city population, density, and location data
 
 Clean data to City	State	Population	Density	Latitude	Longitude
 
+#### Venue Data
+
 Pull and process venue data
 
+#### Merging Data
 top 75 cities, 50 venues nearest to city center
 
 City	City Latitude	City Longitude	Venue	Venue Latitude	Venue Longitude	Venue Category
 
+### Data Exploration
+viable relationships
+#### Clustering Cities by Top Venues
 Calculate venue category frequency per city
 
 Grouped by venue category to find counts of each
@@ -92,6 +102,7 @@ to see if there was likely a location to top venue correlation
 also looked at each cluster to characterize
 
 Methodology section which represents the main component of the report where you discuss and describe any exploratory data analysis that you did, any inferential statistical testing that you performed, and what machine learnings were used and why.
+#### Venue Popularity by Population and Density
 
 Exploration of relationships of population and density to venue popularity
 Looking first at population and density, create a new dataframe containing the number one venue category of each city along with its population and density
