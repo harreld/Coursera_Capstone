@@ -59,9 +59,9 @@ City, State, Population, Population Density, Latitude, and Longitude.
 The Foursquare web site provides many APIs for interacting with city location data.
 The API we use is venue search and is documented at https://developer.foursquare.com/docs/api/venues/search
 The API takes a location as an input and returns a list of venues close to that location.
-Each returned venue contains a name, address info, and a venue category.
+Each returned venue contains a name, address info, location, and a venue category.
 A venue category could be, for example, Mexican Restaurant or Bank.
-We will use the Foursquare venue data to determine the frequencies of various venue categories within a particular city.
+We used the Foursquare venue data to determine the frequencies of various venue categories within a particular city.
 The returned data is in json format and relevant values are extracted and structured.
 
 ## Methodology
@@ -128,23 +128,10 @@ These columns were joined with City Name, City Latitude, and City Longitude data
 The gathered data was explored and visualized to gain insight into candidate independent variables that might predict the target variable of popular venue category.  To see if location data was a viable independent variable, the cities were clustered using the k-means algorithm to see if the clusters had a location pattern.  To explore whether population and density variables might be useful a scatter plot was created to graph top venue type by mean population and mean population density. 
 
 #### Clustering Cities by Top Venues
-Calculate venue category frequency per city
+A one-hot table was created for the venue data so that each venue category became a dedicated column with a value of 1 only if the venue was that particular category, 0 otherwise.  This one-hot table was then grouped by City applying a mean for each one-hot column.  This grouped table thus contained the fractional occurence of each venue category within each city.
 
-Grouped by venue category to find counts of each
+The K-means clustering algorithm was applied to the top 10 venue categories to find 5 clusters of cities grouped by most similar rankings.  The category value of each city was merged with its location data in preparation for graphing.  A map of the United States was created with each of the 75 considered cities marked with using a color coded by category.  Each of the 5 categories was also examined by table to see rough patterns in the top venues. 
 
-Found unique categories
-
-Created a one hot table to have a column for each category
-
-grouped one hot table by city and found mean of each venue category to find fractionals
-
-examined the top 5 venue categories for each city
-
-Perform clustering of cities based on similarity of top venue categories
-to see if there was likely a location to top venue correlation
-also looked at each cluster to characterize
-
-Methodology section which represents the main component of the report where you discuss and describe any exploratory data analysis that you did, any inferential statistical testing that you performed, and what machine learnings were used and why.
 #### Venue Popularity by Population and Density
 
 Exploration of relationships of population and density to venue popularity
