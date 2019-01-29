@@ -66,8 +66,11 @@ The returned data is in json format and relevant values are extracted and struct
 
 ## Methodology
 
-Intro to methodology
+A Jupyter Notebook [PopVenueModel.ipynb](PopVenueModel.ipynb) running a python kernel was used to gather, sanitize, explore, model, and visualize data.  Data was brought in by accessing the city wikipedia table and the Foursquare venues API.  It was processed and cleaned so the two data sets could be merged into one.  Exploration was done by k-means clustering, statistical analysis, scatter plots, and geographic mapping.  A decision tree model was trained and validated to predict popular venues based on city data.
+
 ### Ingesting Data
+Data was directly accessed from the wiki web page and the Foursquare API and cleaned using 
+
 #### City Data
 Pull in city population, density, and location data
 
@@ -110,11 +113,13 @@ Group this data by venue category and find the mean of population and density fo
 
 Graphed Mean City Population and Density per venue categores
 
+### Venue Popularity Modeling
+#### Model Training
 Modeling of venue popularity from population, density, and location
 categorical model Since population, density, and location all showed feasible relationships to venue popularity, use them as independent variables in the modeling.
 The target variable is most popular venue category.
 Choose a decision tree since the independent variable is categorical.
-
+#### Model Validation
 held out 20% of data 60/15
 trained to tree depth 4
 
