@@ -37,11 +37,11 @@ Choosing what to build in a particular city is a difficult prospect and could in
 Location data services such as Foursquare will show what current venues exist in a particular city, but they do not generally tell what venue types _should_ be popular in that city.
 
 This project developed a model that predicts which venue types might be popular based on analyzing popular types in similar cities.
-Such a model could help developers see what venue types might be popular in a particular city and whether those types are locally underrepresented.
+Such a model could help developers see what venue types might be popular in a particular city and whether those types are locally underrepresented.  Venues predicted to be popular but with low representation would be strong candidate for investment.
 
 The developer can use this information to make better project decisions and increase their return on investment.
 Also, this model of venue popularity can expose trends and patterns.
-For example, it may be possible to find venue types that are popular in a certain geogrphic region or city size.
+For example, it may be possible to find venue types that are popular in a certain geographic region or city size.
 Having this information can lead to better long term planning.
 
 ## 2 Data
