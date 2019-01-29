@@ -220,22 +220,14 @@ For the 8 cities where the prediction matched one of the top 10 actual ranked ve
 
 ## Discussion
 
-section where you discuss any observations you noted and any recommendations you can make based on the results.
+The Foursquare account used had limiting policies that kept the city count at 75 and the venues per city at 50.  This greatly limited the venues to only those found in the city center without sampling the entire city.  Due to this there was observed bias found in the data for example the cluster containing only San Francisco being skewed towards harbor related venues while the one containing only Corpus Christi was skewed towards resort related venues.  Other cities could similarly be seen to have an overrepresentation of venues occuring at the center of down town.  Using an unlimited Foursquare account would allow the range and venue count to cover the entire city and give much more representative data for the venues that city contained.  We would expect better model results overall given this data.
 
-lots of restaurants
-only small range of downtown, limited to 50
-model predict top 10 instead of 1
-cluster distance based on set inclusion instead of exact rank match
+The clustering algorithm defined closeness based on equivalent venue categories between cities in a particular rank.  For example, two cities would have more 'closeness' for clustering if they both had *Bar* in the 3rd ranked position.  They would not be considered any closer, however, if one had *Bar* in rank 2 and the other had it in rank 3.  This makes the closeness measure more brittle and could be improved so that closeness was granted when the same category appeared between cities in any rank.  It might be further refined to give more closeness if the ranks were nearer.  Having a refined closeness algorithm would yield better clustering and likely give greater insight into the city trends.
 
-## Conclusion section where you conclude the report.
+Most of the venue categories were restaurants, however there were other categories analyzed.  It was difficult to see patterns in the non restaurants, however, because that data was in the noise of the restaurant data.  If better insight was desired in the non restaurant venues, it would be worthwhile to repeat the analysis separately for each classification of categories.  This would allow better understanding, for example, into where museums are popular.
 
-2. A link to your Notebook on your Github repository pushed showing your code. (15 marks)
+## Conclusion
 
-3. Your choice of a presentation or blogpost. (10 marks)
+Using the decision tree model and other results, it is possible to make recommendations on likely popular venue categories for a particular city based on population, population density, and geographic location.  We can imagine, however, a developer intending to develop a venue in a city using this model to see what kinds of venues might be popular.  The predicted popularity could be compared to actual venue occurence to find gaps in actual venues.  Identifying a likely popular venue that does not yet occur in a particular presents an opportunity for successful development and high return on investment.
 
-
-**
-lots of restaurants
-only small range of downtown, limited to 50
-model predict top 10 instead of 1
-cluster distance based on set inclusion instead of exact rank match
+While the preliminary results are promising, limitations in the available data and tools hampered the ability to construct robust models.  Acquiring more data and refining our models further would likely make this approach more powerful.  
