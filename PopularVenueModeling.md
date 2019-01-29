@@ -7,7 +7,7 @@
 ## Table of Contents
 
 ## Abstract
-The problem of how a developer could choose a venue to successfully develop in a city is considered.  City data is used to predict what venues would be popular based on similar cities. 
+The problem of how a developer could choose a venue to successfully develop in a city is considered.  City population, population density, and geographic locatin data is used to predict what venues would be popular based on similar cities.   K-means clustering is used to group cities by similar top venue categories.  Finally, a decision tree model is developed to predict the top venue for a city based on city data.  With some refinement, this model would be useful for choosing profitable venue types. 
 
 ## Introduction
 
