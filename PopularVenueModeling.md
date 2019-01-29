@@ -113,6 +113,7 @@ All columns were cast to the correct type so that numerics could be analyzed.
 After cleanup the city data consisted of the following columns: City, State, Population, Density, Latitude, and	Longitude.
 
 #### Venue Data
+The 75 largest cities were separated from the city data to be the population.  For each of these cities, the Foursquare venue search API was accessed to 
 
 Pull and process venue data
 
