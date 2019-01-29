@@ -154,7 +154,9 @@ After the data was explored it was determined that all four of the considered va
 
 #### Model Training
 
-The decision tree was trained using the scikit-learn DecisionTreeClassifier.  This purpose of the classifier is to consturct a tree of simple tests on the independent variables that will ultimately lead to an endpoint containing the predicted classification of the target variable.  The training was done using 80% of the 75 cities (60).  The tree was constructed to a depth of 4.  After construction of the tree, it was visualized as a flow graph with true or false branches on a condition at each node as well as a best-guess venue category.
+The decision tree was trained using the scikit-learn DecisionTreeClassifier.  This purpose of the classifier is to consturct a tree of simple tests on the independent variables that will ultimately lead to an endpoint containing the predicted classification of the target variable.  Details on the underlying algorithm are at https://scikit-learn.org/stable/modules/tree.html  
+
+The training was done using 80% of the 75 cities (60).  The tree was constructed to a depth of 4.  After construction of the tree, it was visualized as a flow graph with true or false branches on a condition at each node as well as a best-guess venue category.
 
 #### Model Validation
 
