@@ -150,18 +150,15 @@ Examining this plot gave insight into the range and clustering of population and
 
 ### Venue Popularity Modeling
 
-After the data was explored it was determined that all four of the considered variables: Population, Population Density, Latitude, and Longitude were viable candidates as independent variables.  All four of these are numeric values.  The target variable was considered to be top venue category, which is a categorical variable.  Since the output of the model was categorical, a decision tree model was used.  To check the validity of a trained decision tree, 20% of the data was held back for testing purposes.
+After the data was explored it was determined that all four of the considered variables: Population, Population Density, Latitude, and Longitude were feasible candidates as independent variables.  All four of these are numeric values.  The target variable was top venue category, which is a categorical variable.  Since the output of the model was categorical, a decision tree model was used.  To check the validity of a trained decision tree, 20% of the data was held back for testing purposes.
 
 #### Model Training
-Modeling of venue popularity from population, density, and location
-categorical model Since population, density, and location all showed feasible relationships to venue popularity, use them as independent variables in the modeling.
-The target variable is most popular venue category.
-Choose a decision tree since the independent variable is categorical.
+
+The decision tree was trained using the scikit-learn DecisionTreeClassifier.  This purpose of the classifier is to consturct a tree of simple tests on the independent variables that will ultimately lead to an endpoint containing the predicted classification of the target variable.  The training was done using 80% of the 75 cities (60).  The tree was constructed to a depth of 4.  After construction of the tree, it was visualized as a flow graph with true or false branches on a condition at each node as well as a best-guess venue category.
+
 #### Model Validation
-held out 20% of data 60/15
-trained to tree depth 4
 
-
+For validation, 20% of the 75 cities (15) were held back from training.  Each of these 15 cities had their population, population density, and location information put into the trained model to output a predicted venue category.  The actual top ten venue categories for each of the cities was then used to determine the accuracy of the prediction.  The number of predictions occuring in the top 10 actuals was calculated.  For the predictions that were found in the top 10 actuals, analysis on the actual rankied postion was performed to calculate mean, standard deviation, range, and quartile statistics. 
 
 ## Results
 
