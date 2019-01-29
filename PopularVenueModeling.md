@@ -180,7 +180,7 @@ Summarizing, the following observations were made for the five categories:
 | 0 | Red | Coastal/Midwest | Diverse Restaurants and Coffee Shops |
 | 1 | Purple | San Francisco Only | Harbor related |
 | 2 | Blue | North east trend | Bars |
-| 3 | Green | Coastal/Midwest | Mexican Restaurants |
+| 3 | Green | South/Midwest | Mexican Restaurants |
 | 4 | Orange | Corpus Christi only | Resort related |
 
 map-seems like some correlation - e.g. red and green coastal and midwest, blue tending towards north east, purple san francisco only, orange corpus cristi only
@@ -204,20 +204,18 @@ Cities with top venue category *Portuguese Restaurant* have the minimum mean pop
 
 ### Decision Tree Model for Top Venue Category
 
-tree picture
+The trained decision tree model had the following branching structure:
+
 ![Decision tree](PopVenueModel_decision_tree.JPG "Decision Tree")
 
-oveall most likely coffee shop
-  south of long beach CA- mexican restaurant
-    smaller than san antonio tx - sandwich place
-    larger  than san antonio tx - mexican restaurant
-  north of long beach CA- coffee shop
-    west of rockford IL- coffee shop 
-    east of rockford IL - bar
+Each node shows the current best-guess category at that stage, the number of training data points that flow through that node, the classification question for the next stage.  Edges go to the next stage up if the answer to the classification question was true and down if it was false.
 
-Predicted 8 out of 15 in the top ten venues
+The classification questions can be made easier to understand by comparing them to actual cities.  For example, looking at the first few stages, we can see that the best guess given no information is that a city's top venue is *Coffee Shop*.  From that point, if the city is south of Long Beach CA the guess would change to *Mexican Restaurant*  From that node if the city were smaller than San Antonio TX the best guess would change to *Sandwich Place*
 
-stats table
+For verification, the held back 15 cities were run through the model.  It was found that the model was able to predict the category within the top ten actuals in 8 out of 15 cities.
+
+For the 8 cities where the prediction matched one of the top 10 actual ranked venues, the ranked value of the match was statistically analyzed as follows:
+
 ![Rank found statistics](PopVenueModel_rank_found_stats.JPG "Rank found statistics")
 
 ## Discussion
